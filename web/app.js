@@ -1,0 +1,8 @@
+const form=document.querySelector('#form'),input=document.querySelector('#input'),chat=document.querySelector('#chat'),mode=document.querySelector('#mode'),status=document.querySelector('#status');
+const messages=[];
+function add(role,text){const el=document.createElement('article');el.className=role;el.textContent=text;chat.append(el);el.scrollIntoView({behavior:'smooth'});}
+async function health(){try{const r=await fetch('/api/health');const d=await r.json();status.textContent=d.configured?`Engine ready · ${d.model}`:'Engine installed · API key not configured on server';}catch{status.textContent='Engine unreachable';}}
+form.addEventListener('submit',async e=>{e.preventDefault();const text=input.value.trim();if(!text)return;input.value='';messages.push({role:'user',content:text});add('user',text);const button=form.querySelector('button');button.disabled=true;status.textContent='Thinking…';try{const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({mode:mode.value,messages})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Request failed');const reply=d.message?.content||'No response returned.';messages.push({role:'assistant',content:reply});add('assistant',reply);status.textContent=`${mode.options[mode.selectedIndex].text} · ${d.model}`;}catch(err){add('assistant',`Engine error: ${err.message}`);status.textContent='Request failed';}finally{button.disabled=false;input.focus();}});
+mode.addEventListener('change',()=>{status.textContent=`Switched to ${mode.options[mode.selectedIndex].text}`;});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+health();
