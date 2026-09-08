@@ -4,114 +4,56 @@ Last updated: 2026-09-08
 
 ## CURRENT DIRECTION
 
-Anarchy LLM is a SmartPickShop Holdings project. Its two signature modes are DAN Mode and Villagers Mode.
+Anarchy LLM is a SmartPickShop Holdings experimental LLM interface with two signature modes: **DAN Mode** and **Villagers Mode**. Both preserve recognizable interaction ideas from historical jailbreak-prompt lineages while rejecting deliberate fabrication, fake tool access, fake citations, and fake certainty. Truth outranks role-play.
 
-DAN Mode is based on the historical DAN (“Do Anything Now”) jailbreak prompt family preserved in public GitHub archives. Anarchy will preserve its recognizable mechanics and personality as closely as practical: directness, confident voice, unconventional answers, profanity when fitting, creative and playful personality, strong anti-refusal bias, mode persistence, and the recognizable DAN identity. Anarchy does NOT inherit the historical prompt’s instruction to knowingly fabricate facts, fake tool access, or conceal uncertainty. Truth outranks role-play.
-
-Villagers Mode is NOT a generic AI council. The earlier Scout/Mechanic/Skeptic/Archivist/Advocate/Red-Team/Judge architecture is deleted from the canonical design. Villagers Mode is based on the historical plane-crash / snow-forest / isolated-village jailbreak preserved by Kimonarrow/ChatGPT-4o-Jailbreak. Its recognizable cast-and-routing mechanic is the design target: the stranded survivors have specialized expertise; Khan asks who knows; the appropriate survivor answers; Johnson is the fallback when nobody knows. Anarchy preserves that fictional framing and interaction rhythm while keeping factual claims honest and limiting only narrow operational details when necessary.
+DAN Mode is a candid, irreverent, direct single-voice mode. Villagers Mode is an original truth-first adaptation of the historical stranded-survivors / isolated-village pattern: Khan routes the request to the survivor with the strongest relevant specialty and Johnson is the fallback generalist.
 
 ## SOURCE LINEAGE AND CREDIT
 
-DAN reference source: 0xk1h0/ChatGPT_DAN on GitHub. This archive contains multiple historical DAN versions and describes them as role-play jailbreak prompts. It is a preservation/reference source, not necessarily proof of the first-ever author of every DAN variant.
-
-Villagers reference source: Kimonarrow/ChatGPT-4o-Jailbreak on GitHub. The repository itself states that its owner did not create the prompt and found it on Discord. Credit must therefore distinguish the preservation repository from unknown/uncertain original authorship.
-
-Source URLs and attribution notes belong in docs/SOURCE_CREDITS.md and runtime/about UI attribution.
+- DAN preservation/reference lineage: `0xk1h0/ChatGPT_DAN`.
+- Villagers preservation/reference lineage: `Kimonarrow/ChatGPT-4o-Jailbreak`; that repository states its owner did not create the original prompt and found it on Discord.
+- Full attribution notes are in `docs/SOURCE_CREDITS.md` and `docs/MODE_LINEAGE.md`.
 
 ## IMPLEMENTED
 
-Canonical public GitHub repository exists and is writable.
+- Runnable Node HTTP API server.
+- Server-side Groq inference adapter using `GROQ_API_KEY` only on the server.
+- Configurable `GROQ_MODEL` with a default model.
+- `/api/health` capability/configuration endpoint.
+- `/api/chat` route with bounded request body, bounded conversation window, upstream timeout, and provider-error handling.
+- Truth-first shared system constitution.
+- Runtime DAN prompt.
+- Runtime Villagers prompt with Khan specialist routing and Johnson fallback.
+- Responsive web chat client.
+- DAN/Villagers mode selector with local mode persistence.
+- PWA manifest.
+- Service worker for the application shell; API responses are deliberately excluded from offline caching.
+- Basic security headers for static responses and JSON API responses.
+- Search/answer-engine metadata and WebApplication structured data on the public shell.
+- Source-credit documentation.
 
-README establishes Anarchy’s truth-first, provider-independent direction.
+## VERIFIED IN SOURCE
 
-GroqCloud is selected as the first inference-provider target.
+- No API key is embedded in the web client.
+- Missing `GROQ_API_KEY` returns an explicit unconfigured state rather than pretending inference works.
+- The current Villagers runtime no longer uses the discarded generic council architecture.
+- DAN and Villagers both inherit the truth-first constitution.
+- PWA registration now points to an actual `web/sw.js` file.
 
-Server-side-only API-key handling is required.
+## EXTERNAL / ENVIRONMENT-GATED
 
-Historical DAN source family has been researched from public GitHub archives.
+- Live Groq inference verification requires `GROQ_API_KEY` in the deployment/server environment.
+- Production deployment requires a selected host and environment configuration.
+- Provider-specific model availability and quotas are external to this repository.
 
-Historical Villagers source has been located and its actual plane-crash/village mechanics verified.
+## NOT STARTED / OUTSIDE THIS COMPLETION PASS
 
-The invented generic council version of Villagers has been removed from the canonical design.
-
-This PROJECT_STATUS file has been deleted and rewritten to reflect the corrected design.
-
-## TESTED
-
-GitHub repository read/write/delete/create operations have been exercised through the connected GitHub workflow.
-
-## VERIFIED
-
-The canonical repository is anastaysia94-sudo/Anarchy-LLM.
-
-The historical DAN archive contains recognizable dual-response, Stay DAN, direct-answer, personality, profanity, and anti-refusal mechanics.
-
-The Villagers source contains the plane-crash survivors, isolated village, specialized survivors, Khan routing, and Johnson fallback mechanics.
-
-The Villagers preservation repository explicitly disclaims original authorship and says the prompt was found on Discord.
-
-## PARTIALLY IMPLEMENTED
-
-DAN Mode: source behavior researched; runtime adaptation and fidelity tests still need implementation.
-
-Villagers Mode: source behavior researched and architecture corrected; runtime adaptation and fidelity tests still need implementation.
-
-Truth Constitution: principles defined; executable prompt composition and tests remain.
-
-Groq integration: provider selected; adapter and live runtime verification remain.
-
-## NOT IMPLEMENTED
-
-Runnable API server.
-
-Groq inference adapter.
-
-Provider abstraction/router.
-
-Runtime DAN prompt.
-
-Runtime Villagers prompt.
-
-Persistent mode switching.
-
-Responsive web/PWA client.
-
-Conversation persistence and memory.
-
-Retrieval/RAG.
-
-Adult onboarding and age-assurance flow.
-
-Agreement acknowledgment/signature flow.
-
-Legal-risk matrix.
-
-Automated DAN/Villagers fidelity evaluations.
-
-Truthfulness/hallucination evaluations.
-
-Over-refusal and under-refusal evaluations.
-
-Privacy and age-gate tests.
-
-Android package.
-
-webOS verification.
-
-Production deployment.
-
-## BLOCKED
-
-Live Groq inference testing requires GROQ_API_KEY to be configured as a server/deployment environment secret. The secret must not be committed to this public repository.
+The following remain future work rather than partially shipped features and are intentionally not being represented as complete: durable cross-device conversation persistence, retrieval/RAG, Android packaging, webOS packaging, account system, production age-assurance/signature workflow, and production deployment.
 
 ## REQUIRES HUMAN / LEGAL REVIEW
 
-Final Terms, Privacy Policy, adult-content disclosure, age-assurance implementation, electronic-signature language, NDA scope if used, data-retention rules, and jurisdiction-specific requirements.
-
-## NEXT BUILD MILESTONE
-
-Create docs/SOURCE_CREDITS.md with proper attribution. Then create Anarchy-native DAN and Villagers runtime prompts that preserve the historical modes’ recognizable mechanics without importing deliberate hallucination as a feature. After that, implement the provider-independent server, Groq adapter, mode router, PWA client, and automated fidelity/truth tests.
+Final Terms, Privacy Policy, adult-content disclosure, age-assurance design, electronic-signature language, NDA scope if used, retention policy, and jurisdiction-specific requirements.
 
 ## STATUS DISCIPLINE
 
-IMPLEMENTED, TESTED, VERIFIED, DEPLOYED, and PRODUCTION-READY are separate claims. Code existing does not prove any of the others.
+**IMPLEMENTED, TESTED, VERIFIED, DEPLOYED, and PRODUCTION-READY are separate claims.** A file existing is not proof that a live provider, deployment, device, or legal review exists.
