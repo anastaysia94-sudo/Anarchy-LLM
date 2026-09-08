@@ -1,0 +1,36 @@
+name: Anarchy CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'server/**'
+      - 'web/**'
+      - 'test/**'
+      - 'docs/**'
+      - 'PROJECT_STATUS.md'
+      - 'package.json'
+      - '.github/workflows/ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: Verify source-credit and PWA files
+        run: |
+          test -f docs/SOURCE_CREDITS.md
+          test -f docs/MODE_LINEAGE.md
+          test -f web/manifest.webmanifest
+          test -f web/sw.js
+          grep -q "Truth outranks" server/index.js
+          grep -q "Khan is the coordinator" server/index.js
