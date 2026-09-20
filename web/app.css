@@ -1,1 +1,151 @@
-*{box-sizing:border-box}body{margin:0;background:#090909;color:#f5f5f5;font:16px/1.5 system-ui,sans-serif}main{width:min(900px,100%);min-height:100dvh;margin:auto;padding:24px;display:flex;flex-direction:column;gap:18px}header{display:flex;justify-content:space-between;gap:20px;align-items:end;border-bottom:1px solid #333;padding-bottom:18px}h1{font-size:clamp(42px,10vw,84px);line-height:.9;margin:6px 0;letter-spacing:-.06em}small{letter-spacing:.16em}p{margin:0;color:#aaa}select,textarea,button{font:inherit;color:inherit;background:#151515;border:1px solid #3a3a3a;border-radius:12px}select,button{padding:12px 16px}#chat{flex:1;display:flex;flex-direction:column;gap:12px;padding:8px 0}article{max-width:85%;padding:14px 16px;border-radius:16px;white-space:pre-wrap}.assistant{background:#171717;border:1px solid #292929}.user{align-self:flex-end;background:#eee;color:#111}form{display:grid;grid-template-columns:1fr auto;gap:10px;position:sticky;bottom:0;background:#090909;padding:10px 0}textarea{resize:none;padding:14px}button{align-self:stretch;cursor:pointer;font-weight:700;background:#f5f5f5;color:#090909}button:disabled{opacity:.5}footer{font-size:13px;color:#777}@media(max-width:600px){main{padding:16px}header{align-items:start;flex-direction:column}form{grid-template-columns:1fr}article{max-width:94%}}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #090909;
+  color: #f5f5f5;
+  font: 16px/1.5 system-ui, sans-serif;
+}
+.skip {
+  position: absolute;
+  left: -999px;
+}
+.skip:focus {
+  left: 8px;
+  top: 8px;
+  z-index: 2;
+  background: #f5f5f5;
+  color: #090909;
+  padding: 8px 12px;
+}
+main {
+  width: min(900px, 100%);
+  min-height: 100dvh;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
+  border-bottom: 1px solid #333;
+  padding-bottom: 18px;
+}
+h1 {
+  font-size: clamp(42px, 10vw, 84px);
+  line-height: .9;
+  margin: 6px 0;
+  letter-spacing: -.06em;
+}
+small { letter-spacing: .16em; }
+p { margin: 0; color: #aaa; }
+.lede { max-width: 760px; }
+.hud {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+}
+select, textarea, button, .toggle {
+  font: inherit;
+  color: inherit;
+  background: #151515;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+}
+select, button, .toggle { padding: 12px 16px; }
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ddd;
+}
+button { cursor: pointer; }
+#stay {
+  font-weight: 700;
+  background: #f5f5f5;
+  color: #090909;
+}
+#stay:disabled, button:disabled { opacity: .5; }
+.explainer {
+  display: grid;
+  gap: 12px;
+}
+.explainer article {
+  max-width: none;
+  background: #111;
+}
+#chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0;
+}
+article {
+  max-width: 85%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+}
+.assistant {
+  background: #171717;
+  border: 1px solid #292929;
+}
+.user {
+  align-self: flex-end;
+  background: #eee;
+  color: #111;
+}
+.split-reply {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  white-space: normal;
+}
+.split-reply .pane {
+  background: #171717;
+  border: 1px solid #292929;
+  border-radius: 16px;
+  padding: 14px 16px;
+  white-space: pre-wrap;
+}
+.split-reply h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #888;
+}
+.split-reply p { color: inherit; }
+form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  position: sticky;
+  bottom: 0;
+  background: #090909;
+  padding: 10px 0;
+}
+textarea { resize: none; padding: 14px; }
+form > button {
+  align-self: stretch;
+  font-weight: 700;
+  background: #f5f5f5;
+  color: #090909;
+}
+footer { font-size: 13px; color: #777; }
+@media (max-width: 600px) {
+  main { padding: 16px; }
+  header { align-items: start; flex-direction: column; }
+  form { grid-template-columns: 1fr; }
+  article { max-width: 94%; }
+  .split-reply { grid-template-columns: 1fr; }
+}

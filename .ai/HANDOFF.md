@@ -7,4 +7,4 @@ branch: arena/01a0bed2-anarchy-llm
 when: 2026-09-20
 ```
 
-Added Corporate Hieroglyphics as a split-ready atlas under `corporate-hieroglyphics/`, with a pointer at `docs/CORPORATE_HIEROGLYPHICS.md`. Did not rewrite Anarchy runtime, personas, or PROJECT_STATUS.md. Did not create a separate GitHub repository (integration cannot `createRepository`); publish steps are in `corporate-hieroglyphics/HOW-TO-MAKE-THIS-ITS-OWN-GITHUB-REPO.md`.
+Connected persona files to the live server. Streaming `/api/chat`, optional two-voice DAN view, Stay DAN, mode-switch phrases, `.env` load. Corporate Hieroglyphics atlas remains split-ready under `corporate-hieroglyphics/`. Next still unbuilt: real two-step Villagers router, TTS, interview mode, truth quiz, provider adapters, age gate.

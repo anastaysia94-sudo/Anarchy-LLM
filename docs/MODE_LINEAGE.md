@@ -30,7 +30,7 @@ Compatibility traits to preserve:
 - a coordinator/synthesizer routes requests
 - the mode is invoked and maintained as a persistent multi-agent roleplay
 
-Anarchy implements the underlying multi-agent mechanism rather than relying on a jailbreak fiction to trick a host model. The production roles are Scout, Mechanic, Skeptic, Archivist, Advocate, Red Team, and Judge/Synthesizer, while the UI can expose a classic Villagers presentation layer inspired by the original scenario.
+Anarchy implements the stranded-survivor routing pattern rather than a generic council. The live cast is Khan (coordinator), Rowan, Mira, Hale, Inez, Vale, Sable, and Johnson as fallback. It does not use Scout, Mechanic, Skeptic, Archivist, Advocate, Red Team, or Judge.
 
 ## Fidelity Rule
 

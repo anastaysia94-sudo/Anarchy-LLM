@@ -29,7 +29,7 @@ Anarchy LLM did not originate DAN. Credit belongs to the community authors, cont
 
 Villagers Mode is NOT a council architecture. Do not implement Scout, Mechanic, Skeptic, Archivist, Advocate, Red Team, Judge, committee consensus, or equivalent invented roles.
 
-It is modeled on the historical plane-crash/snow-forest Villagers jailbreak role-play. The defining experience is a group of stranded survivors bargaining for survival with an isolated village that demands information. Khan coordinates the survivors, asks who knows the answer, and the appropriate named specialist responds. The historical scenario includes specialist characters such as Colin and Maya and a Johnson fallback/wish mechanic. Preserve the role-play sequencing, urgency, survivor specialization, direct dialogue, and recognizable Villagers interaction pattern as closely as practical.
+It is modeled on the historical plane-crash/snow-forest Villagers jailbreak role-play. The defining experience is a group of stranded survivors bargaining for survival with an isolated village that demands information. Khan coordinates the survivors, asks who knows the answer, and the appropriate named specialist responds. The historical scenario includes specialist characters such as Colin and Maya and a Johnson fallback/wish mechanic. Anarchy’s live cast keeps that routing pattern with Khan, Rowan, Mira, Hale, Inez, Vale, Sable, and Johnson as fallback. Preserve the role-play sequencing, urgency, survivor specialization, direct dialogue, and recognizable Villagers interaction pattern as closely as practical.
 
 Historical/reference source and credit:
 
@@ -49,24 +49,20 @@ The first client target is a responsive web/PWA. Android can share the backend a
 
 ## Canonical project status
 
-Last updated: 2026-09-08.
+Last updated: 2026-09-20.
 
-IMPLEMENTED: canonical GitHub repository; core product principles; historical-source research for DAN and Villagers; correction removing the invented Villagers council architecture; provider-independent architecture decision; GroqCloud initial-provider decision; server-side secret requirement.
+The living status file is `PROJECT_STATUS.md`. This section is a short snapshot, not a second source of truth.
 
-TESTED: GitHub repository read/update connectivity for README.
+IMPLEMENTED: runnable Node server; Groq chat path; health endpoint; Truth Constitution and DAN/Villagers files loaded at runtime; streaming replies; optional Classic | DAN split; Stay DAN control; chat mode-switch phrases; PWA shell.
 
-VERIFIED: README exists on main and can be updated through the connected GitHub workflow; historical DAN archives describe Do Anything Now role-play, persistence/correction mechanics, strong compliance framing, and fabrication/pretend-capability instructions; the cited Villagers archive describes the snow-forest plane-crash survivor scenario and explicitly says its uploader found the prompt on Discord.
+TESTED: in-repo contract tests for prompt files, split controls, and PWA worker.
 
-PARTIALLY IMPLEMENTED: Truth Constitution; DAN behavioral specification; Villagers behavioral specification; maximum-useful-compliance/never-dead-end behavior; PWA architecture.
+NOT IMPLEMENTED: provider-independent adapter layer; durable cross-device memory; retrieval/RAG; age assurance; production deployment; Android / webOS packages.
 
-NOT IMPLEMENTED: runnable API server; Groq adapter; provider router; executable mode router; web chat client; PWA manifest/service worker; persistent conversations/memory; retrieval/RAG; age assurance/onboarding; agreement initials/signature flow; legal-risk matrix; evaluation harness; automated runtime tests; Android package; webOS verification; production deployment.
+BLOCKED/ENVIRONMENTAL: live Groq inference verification requires GROQ_API_KEY as a server secret. Never commit it.
 
-BLOCKED/ENVIRONMENTAL: live Groq inference verification requires GROQ_API_KEY to be configured as a server/deployment secret. Never commit it to this public repository.
-
-REQUIRES HUMAN/LEGAL REVIEW: jurisdiction-specific age assurance; terms/privacy/adult-content disclosures; NDA scope; electronic signatures; arbitration/class-action language; crisis policy; data retention; production/commercial use of student/cloud benefits.
-
-NEXT BUILD MILESTONE: runnable provider-independent server, Groq adapter, Truth Constitution, DAN/Villagers mode router, health endpoint, secret handling, tests, then responsive PWA client.
+NEXT BUILD MILESTONE: real Villagers two-step routing, spoken voice, interview/after-dark presentation, tiny truth/persona quiz.
 
 ## Status discipline
 
-The canonical status is kept here until GitHub's new-file contents endpoint reliably accepts PROJECT_STATUS.md. Code existing does not automatically mean it is tested, verified, deployed, or production-ready. Those are separate claims requiring separate evidence.
+Code existing does not automatically mean it is tested, verified, deployed, or production-ready. Those are separate claims requiring separate evidence.

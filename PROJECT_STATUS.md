@@ -1,6 +1,6 @@
 # Anarchy LLM — Canonical Project Status
 
-Last updated: 2026-09-08
+Last updated: 2026-09-20
 
 ## CURRENT DIRECTION
 
@@ -21,9 +21,13 @@ DAN Mode is a candid, irreverent, direct single-voice mode. Villagers Mode is an
 - Configurable `GROQ_MODEL` with a default model.
 - `/api/health` capability/configuration endpoint.
 - `/api/chat` route with bounded request body, bounded conversation window, upstream timeout, and provider-error handling.
-- Truth-first shared system constitution.
-- Runtime DAN prompt.
-- Runtime Villagers prompt with Khan specialist routing and Johnson fallback.
+- Truth-first shared system constitution loaded from `constitutions/TRUTH_CONSTITUTION.md`.
+- Runtime DAN and Villagers prompts loaded from `personas/`, not hardcoded strings.
+- Runtime Villagers prompt with Khan specialist routing, Rowan/Mira/Hale/Inez/Vale/Sable, and Johnson fallback. No council architecture.
+- Streaming `/api/chat` replies.
+- Optional Classic | DAN split view.
+- Stay DAN control and in-chat mode-switch phrases.
+- Local `.env` loading without committing secrets.
 - Responsive web chat client.
 - DAN/Villagers mode selector with local mode persistence.
 - PWA manifest.
@@ -37,6 +41,7 @@ DAN Mode is a candid, irreverent, direct single-voice mode. Villagers Mode is an
 - No API key is embedded in the web client.
 - Missing `GROQ_API_KEY` returns an explicit unconfigured state rather than pretending inference works.
 - The current Villagers runtime no longer uses the discarded generic council architecture.
+- `constitutions/modes.md` matches that decision.
 - DAN and Villagers both inherit the truth-first constitution.
 - PWA registration now points to an actual `web/sw.js` file.
 

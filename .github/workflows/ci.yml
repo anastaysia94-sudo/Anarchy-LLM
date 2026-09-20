@@ -9,6 +9,8 @@ on:
       - 'web/**'
       - 'test/**'
       - 'docs/**'
+      - 'constitutions/**'
+      - 'personas/**'
       - 'PROJECT_STATUS.md'
       - 'package.json'
       - '.github/workflows/ci.yml'
@@ -32,5 +34,7 @@ jobs:
           test -f docs/MODE_LINEAGE.md
           test -f web/manifest.webmanifest
           test -f web/sw.js
-          grep -q "Truth outranks" server/index.js
-          grep -q "Khan is the coordinator" server/index.js
+          grep -q "Truth outranks" constitutions/TRUTH_CONSTITUTION.md
+          grep -q "Khan is the coordinator" personas/VILLAGERS.md
+          grep -q "personas/DAN.md" server/index.js
+          grep -q "text/event-stream" server/index.js
